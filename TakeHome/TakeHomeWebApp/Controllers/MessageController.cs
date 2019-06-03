@@ -9,6 +9,8 @@ namespace TakeHomeWebApp.Controllers
 {
     public class MessageController : BaseController
     {
+        public MessageController(TakeHomeDatabaseContext databaseContext) : base(databaseContext) { }
+
         [Route("message")]
         [HttpPost]
         public IActionResult CreateMessage([FromBody]string sourceId, [FromBody]string content, [FromBody]string status)

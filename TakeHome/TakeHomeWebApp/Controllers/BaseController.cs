@@ -9,6 +9,11 @@ namespace TakeHomeWebApp.Controllers
 {
     public abstract class BaseController : Controller
     {
-        protected TakeHomeDatabaseContext _database = new TakeHomeDatabaseContext();
+        protected readonly TakeHomeDatabaseContext _database;
+
+        public BaseController(TakeHomeDatabaseContext databaseContext)
+        {
+            _database = databaseContext;
+        }
     }
 }

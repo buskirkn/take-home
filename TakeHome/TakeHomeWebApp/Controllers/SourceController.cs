@@ -10,6 +10,8 @@ namespace TakeHomeWebApp.Controllers
 {
     public class SourceController : BaseController
     {
+        public SourceController(TakeHomeDatabaseContext databaseContext) : base(databaseContext) { }
+
         // *****************************************************************
         /// <summary>
         /// Retrieves the Source with the given Id. If no source

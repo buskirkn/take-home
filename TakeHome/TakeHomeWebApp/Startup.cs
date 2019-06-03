@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace TakeHomeWebApp
 {
@@ -33,6 +34,12 @@ namespace TakeHomeWebApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Enable the SQLite database context with service dependency injection
+            services.AddEntityFrameworkSqlite();
+            services.AddDbContext<Models.TakeHomeDatabaseContext>((serviceProvider, options) =>
+                        options.UseSqlite("Filename=C:\\Users\\niklaus\\Documents\\GitHub\\take-home\\db.sqlite")
+                               .UseInternalServiceProvider(serviceProvider));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
