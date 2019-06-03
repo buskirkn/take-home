@@ -11,6 +11,15 @@ namespace TakeHomeWebApp.Controllers
     {
         public MessageController(TakeHomeDatabaseContext databaseContext) : base(databaseContext) { }
 
+        // *****************************************************************
+        /// <summary>
+        /// Creates a new message based on the posted message information.
+        /// </summary>
+        /// <param name="sourceId">The source where the message is transmitted</param>
+        /// <param name="content">The content of the message</param>
+        /// <param name="status">The status of the message</param>
+        /// <returns></returns>
+        // *****************************************************************
         [Route("message")]
         [HttpPost]
         public IActionResult CreateMessage([FromBody]string sourceId, [FromBody]string content, [FromBody]string status)
@@ -42,6 +51,15 @@ namespace TakeHomeWebApp.Controllers
             return Ok();
         }
 
+        // *****************************************************************
+        /// <summary>
+        /// Updates an existing message with content and/or status
+        /// </summary>
+        /// <param name="messageId">The id of the message to update</param>
+        /// <param name="content">The content of the message</param>
+        /// <param name="status">The status of the message</param>
+        /// <returns></returns>
+        // *****************************************************************
         [Route("message/{messageId}")]
         [HttpPost]
         public IActionResult UpdateMessage(string messageId, [FromBody]string content, [FromBody]string status)
@@ -66,6 +84,13 @@ namespace TakeHomeWebApp.Controllers
             return Ok();
         }
 
+        // *****************************************************************
+        /// <summary>
+        /// Deletes the given message
+        /// </summary>
+        /// <param name="messageId">The id of the message to be deleted.</param>
+        /// <returns></returns>
+        // *****************************************************************
         [Route("message/{messageId}")]
         [HttpDelete]
         public IActionResult DeleteMessage(string messageId)
