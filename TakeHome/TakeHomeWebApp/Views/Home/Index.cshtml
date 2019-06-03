@@ -2,7 +2,107 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            viewController = new ViewController();
+            viewController.initialize();
+        });
+
+    </script>
+}
+
+<div id="all-sources-view" style="display:none;">
+    <div class="row header">
+        <div class="col-12">Sources</div>
+    </div>
+    <div class="loading-message">
+        Loading
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Source ID</td>
+                <td>Name</td>
+                <td>Environment</td>
+                <td>Encoding</td>
+                <td>Created</td>
+                <td>Updated</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div id="source-view" style="display:none;">
+    <div>
+        <button class="btn btn-info back-button">Back to Sources</button>
+    </div>
+    <div class="row header">
+        <div class="col-12">Source</div>
+    </div>
+    <div class="row source-info-header">
+        <div class="col-sm-3">
+            <h4>Id</h4>
+            <div class="source-id"></div>
+        </div>
+        <div class="col-sm-3">
+            <h4>Name</h4>
+            <div class="source-name"></div>
+        </div>
+        <div class="col-sm-3">
+            <h4>Environment</h4>
+            <div class="source-environment"></div>
+        </div>
+        <div class="col-sm-3">
+            <h4>Encoding</h4>
+            <div class="source-encoding"></div>
+        </div>
+    </div>
+    <div class="row header">
+        <div class="col-12">Messages</div>
+    </div>
+    <div class="row messages-aggregation">
+        <div class="col-sm-3">
+            <h5>Processing</h5>
+            <div class="messages-processing-count"></div>
+        </div>
+        <div class="col-sm-3">
+            <h5>Enqueued</h5>
+            <div class="messages-enqueued-count"></div>
+        </div>
+        <div class="col-sm-3">
+            <h5>Error</h5>
+            <div class="messages-error-count"></div>
+        </div>
+        <div class="col-sm-3">
+            <h5>Finished</h5>
+            <div class="messages-finished-count"></div>
+        </div>
+    </div>
+    <div class="messages-table-container">
+        <div class="loading-message">
+            Loading...
+        </div>
+        <div class="no-results-message">
+            No Messages.
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Message ID</td>
+                    <td>Content</td>
+                    <td>Status</td>
+                    <td>Created</td>
+                    <td>Updated</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div>
+            <button class="btn btn-info load-more-messages-button">Load More</button>
+        </div>
+    </div>
 </div>
